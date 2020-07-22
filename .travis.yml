@@ -1,0 +1,12 @@
+sudo: required
+language: generic
+services:
+    - docker
+
+before_install:
+    - docker build -t zahaanjasani/containerization -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true zahaanjasani/containerization npm run test -- --coverage
+
+
